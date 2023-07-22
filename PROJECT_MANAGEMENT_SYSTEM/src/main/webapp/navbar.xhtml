@@ -1,0 +1,43 @@
+ <html xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-xxxxx" crossorigin="anonymous" />
+    <link rel="stylesheet" href="home.css" />
+</head>
+    <body>
+        <nav class="navbar-container">
+            <div class="logo-container">
+                <a href="home.jsf">
+                    PMS
+                </a>
+            </div>
+    
+            <div class="bars">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+    
+            <ul class="nav-items">
+                <ui:fragment rendered="#{user.response == 'Student' }">
+              <li><a href="home.jsf"><i class="fa fa-angle-right"></i> Home</a></li>
+              <li><a href="addproject.jsp"><i class="fa fa-angle-right"></i> Add Project</a></li>
+              <li><a href="projects.jsf"><i class="fa fa-angle-right"></i> Project List</a></li>
+              <li><a href="contact.jsf"><i class="fa fa-angle-right"></i> Contact</a></li>
+            </ui:fragment>
+            <ui:fragment rendered="#{user.response == 'Guide'}">
+              <li><a href=""><i class="fa fa-angle-right"></i>Project List</a></li>
+              <li><a href="#"><i class="fa fa-angle-right"></i> Approved List</a></li>
+            </ui:fragment>
+            <ui:fragment rendered="#{user.response == 'admin'}">
+              <li><a href="#"><i class="fa fa-angle-right"></i>Users</a></li>
+              <li><a href="#"><i class="fa fa-angle-right"></i>Projects</a></li>
+              <li><a href="#"><i class="fa fa-angle-right"></i>Queries</a></li>
+            </ui:fragment>
+            
+                <div class="login-register">
+                    <a href="#" class="button">Logout</a>
+                </div>
+            </ul>
+        </nav>
+      </body>
+</html>

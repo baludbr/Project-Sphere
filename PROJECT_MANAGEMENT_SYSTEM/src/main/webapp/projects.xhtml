@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Responsive HTML Table With Pure CSS - Web Design/UI Design</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .table__body {
+            max-width: 100%;
+            overflow-x: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .dynamic-table {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+        }
+
+        .dynamic-table thead th {
+            background-color: #f2f2f2;
+            color: #333;
+            font-weight: bold;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .dynamic-table tbody tr {
+            height: 40px; /* Set a fixed height for the table rows */
+        }
+
+        .dynamic-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .dynamic-table tbody tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        .dynamic-table tbody td {
+            padding: 10px;
+            vertical-align: middle;
+            text-align: center;
+            word-wrap: break-word; /* Add this line to enable word wrapping */
+            height: 40px; /* Set a fixed height for the table cells */
+        }
+
+        .dynamic-table .status {
+            padding: 6px 12px;
+            border-radius: 16px;
+            text-align: center;
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+
+        .dynamic-table .status.delivered {
+            background-color: #86e49d;
+            color: #006b21;
+        }
+
+        .dynamic-table .status.cancelled {
+            background-color: #d893a3;
+            color: #b30021;
+        }
+
+        .dynamic-table .status.pending {
+            background-color: #ebc474;
+            color: #5d4502;
+        }
+
+        .dynamic-table .status.shipped {
+            background-color: #6fcaea;
+            color: #006b8a;
+        }
+
+        .Button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin: 0 auto;
+        }
+
+        .Button:hover {
+            background-color: #45a049;
+        }
+
+        .description {
+            max-width: 200px; /* Adjust the width as needed */
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Responsive styles for smaller screens */
+        @media screen and (max-width: 600px) {
+            .dynamic-table {
+                font-size: 14px;
+            }
+
+            .dynamic-table tbody td {
+                padding: 8px;
+            }
+
+            .description {
+                max-width: 120px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <ui:include src="navbar.xhtml" />
+    <br />
+    <br />
+    <br />
+    <h:form>
+        <h:commandButton value="GET Details" action="#{project.dodo()}" class="Button">
+            <f:param name="aa" value="#{user.email}" />
+        </h:commandButton>
+    </h:form>
+    <br />
+    <div class="table__body">
+        <h:dataTable value="#{project.displayProjects()}" var="pro" styleClass="dynamic-table">
+            <h:column>
+                <f:facet name="header">ProjectId</f:facet>
+                #{pro.projectID}
+            </h:column>
+            <h:column>
+                <f:facet name="header">ProjectEmail</f:facet>
+                #{pro.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">ProjectTitle</f:facet>
+                #{pro.ptitle}
+            </h:column>
+            <h:column class="description">
+                <f:facet name="header">ProjectDescription</f:facet>
+                #{pro.pdescription}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Status</f:facet>
+                <p class="status">#{pro.status}</p>
+            </h:column>
+        </h:dataTable>
+    </div>
+</body>
+
+</html>

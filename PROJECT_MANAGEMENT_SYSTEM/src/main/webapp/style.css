@@ -1,0 +1,170 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: url(images/html_table.jpg) center / cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  padding: 2rem;
+}
+
+.description {
+  height: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.Button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin: 0 auto;
+}
+
+.Button:hover {
+  background-color: #45a049;
+}
+
+.table__body {
+  width: 120px;
+  max-height: calc(100vh - 250px);
+  background-color: #fff;
+  margin: 20px 0;
+  border-radius: 8px;
+  overflow: auto;
+}
+
+.dynamic-table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.dynamic-table thead th {
+  background-color: #f9f9f9;
+  color: #333;
+  font-weight: bold;
+  padding: 12px 8px;
+  text-align: center;
+}
+
+.dynamic-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.dynamic-table tbody tr:hover {
+  background-color: #f6f6f6;
+}
+
+.dynamic-table tbody td {
+  padding: 12px 8px;
+  vertical-align: top;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.dynamic-table .status {
+  padding: 8px 16px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.dynamic-table .status.delivered {
+  background-color: #86e49d;
+  color: #006b21;
+}
+
+.dynamic-table .status.cancelled {
+  background-color: #d893a3;
+  color: #b30021;
+}
+
+.dynamic-table .status.pending {
+  background-color: #ebc474;
+}
+
+.dynamic-table .status.shipped {
+  background-color: #6fcaea;
+}
+
+.export__file {
+  position: relative;
+}
+
+.export__file .export__file-btn {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: url(images/export.png) center / 80% no-repeat;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.export__file .export__file-btn:hover {
+  transform: scale(1.15);
+}
+
+.export__file input {
+  display: none;
+}
+
+.export__file .export__file-options {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  width: 180px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: scale(0.8);
+  transform-origin: top right;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.export__file input:checked + .export__file-options {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 100;
+}
+
+.export__file .export__file-options label {
+  display: block;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.export__file .export__file-options label:first-of-type {
+  background-color: #86e49d;
+  color: #006b21;
+}
+
+.export__file .export__file-options label:hover {
+  background-color: #f0f0f0;
+}
+
+.export__file .export__file-options img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}

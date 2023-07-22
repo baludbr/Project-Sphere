@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 <!DOCTYPE html>
 <html xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
@@ -110,187 +109,10 @@
    ::placeholder {
     color: #999999; /* Placeholder color */
   }
-    
-  </style>
-</head>
-
-<body>
-  <div class="container">
-    <div class="card">
-      <div class="card-header">
-        <h3>Sign Up</h3>
-      </div>
-      <div class="card-body">
-        <h:form>
-            #{user.response}
-          <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-signature"></i></span>
-              </div>
-              <h:inputText type="text" id="name" class="form-control" value="#{user.name}" a:placeholder="Name" validatorMessage="Name must be at least 3 characters" />
-            </div>
-           <h:message for="name" style="color: red" /> 
-          </div>
-          <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-              </div>
-<h:inputText type="email" id="email" class="form-control" value="#{user.email}" a:placeholder="Email" validatorMessage="Email is required"  >
-  <f:validateRegex
-		pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-</h:inputText>
-            </div>
-            <h:message for="email" style="color: red" />
-          </div>
-          <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-key"></i></span>
-              </div>
-              <h:inputSecret id="password" value="#{user.password}" class="form-control" a:placeholder="Password" validatorMessage="Password must be at least 8 characters" />
-              <h:message for="password" style="color: red" />
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-user"></i></span>
-              </div>
-              <h:selectOneMenu id="role" value="#{user.role}" class="form-control">
-                <f:selectItem itemValue="Student" itemLabel="Student" />
-                <f:selectItem itemValue="Guide" itemLabel="Project Guide" />
-              </h:selectOneMenu>
-            </div>
-          </div>
-          <div class="form-group">
-            <h:commandButton action="#{user.login()}" class="btn btn-primary btn-block login_btn" value="Sign Up"  />
-          </div>
-        </h:form>
-      </div>
-      <div class="card-footer">
-        <div class="links">
-          Already have an account? <a href="register.jsf">Login</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
-
-</html>
-=======
-
-<!DOCTYPE html>
-<html xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
-
-<head>
-  <title>Signup Page</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
-  <link rel="stylesheet" type="text/css" href="styles.css" />
-
-  <style>
-    /* Add your custom styles here */
-    ::placeholder
+  .response p
     {
-    color:black;
+    color:red;
     }
-    
-
-    body {
-      background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      height: 100%;
-      font-family: 'Numans', sans-serif;
-    }
-
-    .container {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .card {
-      width: 400px;
-      background-color: rgba(0, 0, 0, 0.5) !important;
-      border: none;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .card-header h3 {
-      color: white;
-      text-align: center;
-      margin: 20px 0;
-    }
-
-    .card-body {
-      padding: 30px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .input-group-text {
-      background-color: #FFC312;
-      color: black;
-      border: none;
-    }
-
-    .input-group-text i {
-      font-size: 18px;
-    }
-
-    .form-control {
-      border-radius: 10px;
-    }
-
-    .login_btn {
-      color: black;
-      background-color: #FFC312;
-      width: 100px;
-      border-radius: 20px;
-      border: none;
-      padding: 12px;
-      font-weight: bold;
-      transition: background-color 0.3s;
-    }
-
-    .login_btn:hover {
-      background-color: #FFD700;
-      color: black;
-    }
-
-    .card-footer {
-      background-color: rgba(0, 0, 0, 0.5) !important;
-      border-top: none;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .links {
-      color: white;
-      margin-top: 10px;
-    }
-
-    .links a {
-      margin-left: 4px;
-      text-decoration: none;
-      color: #FFC312;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    .links a:hover {
-      color: #FFD700;
-    }
-   ::placeholder {
-    color: #999999; /* Placeholder color */
-  }
     
   </style>
 </head>
@@ -303,7 +125,9 @@
       </div>
       <div class="card-body">
         <h:form>
-            #{user.response}
+        <div class="response">
+        <p>#{user.response}</p>
+        </div>
           <div class="form-group">
             <div class="input-group">
               <div class="input-group-prepend">
@@ -330,7 +154,8 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-key"></i></span>
               </div>
-              <h:inputSecret id="password" value="#{user.password}" class="form-control" a:placeholder="Password" validatorMessage="Password must be at least 8 characters" />
+              <h:inputSecret id="password" value="#{user.password
+              }" class="form-control" a:placeholder="Password" validatorMessage="Password must be at least 8 characters" />
               <h:message for="password" style="color: red" />
             </div>
           </div>
@@ -346,13 +171,13 @@
             </div>
           </div>
           <div class="form-group">
-            <h:commandButton action="#{user.login()}" class="btn btn-primary btn-block login_btn" value="Sign Up"  />
+            <h:commandButton action="#{user.register()}" class="btn btn-primary btn-block login_btn" value="Sign Up"  />
           </div>
         </h:form>
       </div>
       <div class="card-footer">
         <div class="links">
-          Already have an account? <a href="register.jsf">Login</a>
+          Already have an account? <a href="login.jsf">Login</a>
         </div>
       </div>
     </div>
@@ -360,4 +185,3 @@
 </body>
 
 </html>
->>>>>>> b40cd17dda806c0d209cfc766e89c30240ec06c2
