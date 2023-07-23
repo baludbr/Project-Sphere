@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+<meta charset="UTF-8" />
+<title>Responsive HTML Table With Pure CSS - Web Design/UI Design</title>
+<style>
+/* Add CSS for the table container */
+.table__container {
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+}
+
+/* Add CSS for the table */
+.dynamic-table {
+  width: 80%; /* Set the width to 80% of the container */
+  max-width: 100%; /* Ensure the table doesn't exceed the container's width */
+  border-collapse: collapse;
+  background-color: white; /* Set the background color to white */
+}
+
+.dynamic-table th, .dynamic-table td {
+  border: 1px solid #ddd; /* Add a border to the table cells */
+  padding: 8px; /* Add padding to the table cells */
+  text-align: left;
+}
+
+.dynamic-table th {
+  background-color: #f2f2f2; /* Light gray background color for table header */
+}
+
+/* Increase width for the ProjectDescription column */
+.dynamic-table td.description {
+  width: 40%; /* Set the width to 40% of the table container */
+}
+
+/* CSS for the button */
+.Button {
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	padding: 12px 24px;
+	text-align: center;
+	text-decoration: none;
+	display: block;
+	font-size: 16px;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background-color 0.2s;
+	margin: 20px auto; /* Add margin between the navbar and the button */
+}
+
+.Button:hover {
+	background-color: #45a049;
+}
+
+</style>
+</head>
+<body>
+	<ui:include src="navbar.xhtml" />
+	<br />
+	<br />
+	<br />
+	<h:form>
+		<h:commandButton value="GET Details" action="#{project.dodo()}"
+			class="Button">
+			<f:param name="aa" value="#{user.email}" />
+		</h:commandButton>
+	</h:form>
+	<br />
+	<div class="table__container"> <!-- Add a container around the table -->
+		<div class="table__body">
+			<h:dataTable value="#{project.displayProjects()}" var="pro"
+				styleClass="dynamic-table">
+				<h:column>
+					<f:facet name="header">ProjectId</f:facet>
+					#{pro.projectID}
+				</h:column>
+				<h:column>
+					<f:facet name="header">ProjectEmail</f:facet>
+					#{pro.email}
+				</h:column>
+				<h:column>
+					<f:facet name="header">ProjectTitle</f:facet>
+					#{pro.ptitle}
+				</h:column>
+				<h:column class="description"> <!-- Add class "description" to target the ProjectDescription column -->
+					<f:facet name="header">ProjectDescription</f:facet>
+					#{pro.pdescription}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Status</f:facet>
+					<p class="status">#{pro.status}</p>
+				</h:column>
+				<h:column>
+					<f:facet name="header">ApprovedBy</f:facet>
+					#{pro.approvedby}
+				</h:column>
+			</h:dataTable>
+		</div>
+	</div>
+</body>
+</html>
